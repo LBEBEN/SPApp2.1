@@ -23,6 +23,5 @@
         background-position: center;
         background-size: contain;
     }
-
 </style>
 </html>
