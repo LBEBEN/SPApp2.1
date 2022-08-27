@@ -6,10 +6,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <title>Rodzaje karnetów</title>
 </head>
-<body bgcolor="#6495ed">
-<h2> Rodzaje karnetów</h2>
-<input type="button" onclick="location.href='/bucklet/add';" value="DODAJ KARNET" />
-<input type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+<body style="background-color: #168bb2">
+<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em"> Rodzaje karnetów</h1>
+<input style="border-radius: 3px"  type="button" onclick="location.href='/bucklet/add';" value="DODAJ KARNET" />
+<input style="border-radius: 3px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
 </p>
 <table border="1" bgcolor = #b0c4de id = "buckletTable" class ="display">
     <thead>

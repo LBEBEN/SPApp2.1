@@ -4,12 +4,9 @@
 <head>
     <title>Szczegółowe dane</title>
 </head>
-<body bgcolor="#6495ed">
-<h2> Klient </h2>
-<div style="display: flex">
-    <div><h3>${customer.name}</h3></div>
-    <div style="margin: 0 10px"><h3>${customer.surname}</h3></div>
-</div>
+<body style="background-color: #168bb2">
+<h1 style=" display: inline-flex"> Klient <span style="margin: 0 10px; color: #8c979f;text-shadow: black 0.1em 0.1em 0.2em"> ${customer.name} ${customer.surname}</span></h1>
+<div style="zoom: 1.5">
 <div style="display: flex">
     <div style="margin: 0 10px; font-style: italic"><b style="color: white">Email</b><br>${customer.email}</div>
     <div style="margin: 0 10px; font-style: italic"><b style="color: white">Nr telefonu</b><br>${customer.phoneNumber}</div>
@@ -22,7 +19,7 @@
     <div style="margin: 0 10px; font-style: italic"><b style="color: white">Opłacono depozyt</b><br>
         <c:choose>
             <c:when test="${customer.cartDeposit == true}"><label>OPŁACONO</label> </c:when>
-            <c:when test="${customer.cartDeposit == false}"><label style="color: red">NIE OPŁACONO</label> </c:when>
+            <c:when test="${customer.cartDeposit == false}"><label style="color: red; font-weight: bold">NIE OPŁACONO</label> </c:when>
         </c:choose>
     </div>
 </div>
@@ -37,7 +34,15 @@
     <div style="margin: 0 10px; font-style: italic"><b style="color: white">Uwagi</b><br>${customer.comment}</div>
 </div>
 <p>
-    <input type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
-    <input type="button" onclick="location.href='/customer/edit/${customer.clientId}';" value="EDYTUJ DANE"/>
+    <input style="border-radius: 4px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+    <input style="margin: 0 10px; border-radius: 4px" type="button"  onclick="location.href='/customer/edit/${customer.clientId}';" value="EDYTUJ DANE"/>
+</div>
 </body>
+<style>
+    b{
+        text-shadow: black 0.1em 0.1em 0.2em
+    }
+
+
+</style>
 </html>

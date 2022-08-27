@@ -7,12 +7,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <title>Wszyscy trenerzy</title>
 </head>
-<body bgcolor="#6495ed">
-<h2>Lista trenerów</h2>
+<body style="background-color: #168bb2">
+<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Lista trenerów</h1>
 </p>
 <div>
-    <input type="button" onclick="location.href='/trainer/add';" value="DODAJ TRENERA" />
-    <input type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+    <input style="border-radius: 3px" type="button" onclick="location.href='/trainer/add';" value="DODAJ TRENERA" />
+    <input style="border-radius: 3px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
 </div>
 </p>
 

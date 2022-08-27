@@ -43,9 +43,5 @@
         left: 0;
         margin: auto;
     }
-    /*.flex-item{*/
-    /*    width: 300px;*/
-    /*    height: 50px;*/
-    /*}*/
 </style>
 </html>

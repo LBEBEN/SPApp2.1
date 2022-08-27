@@ -36,7 +36,7 @@ public class BuckletService {
         for (Bucklet b : bucklets) {
             if (b.getBuckletId() == customer.getBucklet().getBuckletId()) {
                 customer.setVisitsLeft(b.getNumberOfVisits());
-                customer.setExpiryDate(customer.getPurchaseDate().plusDays(customer.getBucklet().getValidity()));
+                customer.setExpiryDate(customer.getPurchaseDate().toLocalDate().plusDays(customer.getBucklet().getValidity()));
             }}
     }
 }

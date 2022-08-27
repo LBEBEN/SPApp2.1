@@ -4,9 +4,9 @@
 <head>
     <title>Dodaj trenera</title>
 </head>
-<body bgcolor="#6495ed">
-<h2>Dodaj nowego trenera</h2>
-<form:form method="post" modelAttribute="trainer">
+<body style="background-color: #168bb2">
+<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Podaj dane trenera</h1>
+<form:form cssStyle="zoom: 1.5" method="post" modelAttribute="trainer">
     Imię</br>
     <form:input path="name"/></br>
     <form:errors path="name" cssStyle="color: red"/></br>
@@ -18,7 +18,7 @@
         <form:options items="${descryptions}"/>
     </form:select></br>
     </p>
-    <input type="submit" value="WYŚLIJ">
+    <input style="border-radius: 3px" type="submit" value="WYŚLIJ">
 </form:form>
 
 </body>

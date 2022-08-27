@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -7,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <title>Klienci</title>
 </head>
-<body bgcolor="#6495ed">
-<h2>Lista klientów <label style="color: #11e011">${trainer}</label></h2>
+<body style="background-color: #168bb2">
+<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Lista klientów <label style="color: #11e011">${trainer}</label></h1>
 </p>
 <div>
     <div style="display: inline-block"><input type="button" onclick="location.href='/customer/add';" value="NOWY KLIENT" /></div>

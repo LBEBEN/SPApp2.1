@@ -4,9 +4,9 @@
 <head>
     <title>Dodaj karnet</title>
 </head>
-<body bgcolor="#778899">
-<h2>Dodaj nowy rodzaj karnetu</h2>
-<form:form method="post" modelAttribute="bucklet">
+<body style="background-color: #168bb2">
+<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Rodzaj karnetu</h1>
+<form:form cssStyle="zoom: 1.5" method="post" modelAttribute="bucklet">
     Nazwa</br>
     <form:input path="name"/></br>
     <form:errors path="name" cssStyle="color: #f30909"/></br>

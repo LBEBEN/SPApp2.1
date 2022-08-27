@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -122,10 +123,9 @@ public class CustomerController {
     public String renewBucklet(@PathVariable int clientId, Model model){
         Customer customer = customerService.findById(clientId);
         List<Bucklet> bucklets = buckletService.showAll();
-        model.addAttribute("name", customer.getName());
-        model.addAttribute("surname", customer.getSurname());
+        model.addAttribute("customer", customer);
         model.addAttribute("bucklets", bucklets);
-        model.addAttribute("clientId", clientId);
+        model.addAttribute("newDateSet", customer.getExpiryDate().plusDays(1));
         return "customers/renew";
     }
 
@@ -137,7 +137,7 @@ public class CustomerController {
         }
         Customer customer = customerService.findById(clientId);
         List<Bucklet> bucklet = buckletService.showAll();
-        customer.setPurchaseDate(LocalDate.parse(date));
+        customer.setPurchaseDate(Date.valueOf(LocalDate.parse(date)));
         for (Bucklet b: bucklet){
             if(b.getBuckletId() == buckletType){
                 customer.setBucklet(b);

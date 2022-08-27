@@ -7,10 +7,8 @@ import pl.sportplusopole.trainer.Trainer;
 import pl.sportplusopole.validators.CustomerCartNumber;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -47,8 +45,7 @@ public class Customer {
 
     @Column (name = "purchase_date")
     @javax.validation.constraints.NotNull(message = "Ustaw datę zakupu")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private LocalDate purchaseDate; // data zakupu karnetu
+    private Date purchaseDate; // data zakupu karnetu
 
     private LocalDate expiryDate; // data ważności karnetu
 
