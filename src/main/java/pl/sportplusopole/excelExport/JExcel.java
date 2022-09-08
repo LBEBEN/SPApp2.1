@@ -7,7 +7,7 @@ import jxl.write.*;
 import jxl.write.Number;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.stereotype.Controller;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import pl.sportplusopole.customer.Customer;
@@ -31,7 +31,6 @@ public class JExcel {
 
     public void exportToExcel() throws IOException, WriteException{
         WritableWorkbook workbook = null;
-
         try {
             // tworzę plik
         File file = new File(".");
@@ -120,31 +119,35 @@ public class JExcel {
                 sheet.addCell(cSurname);
                 Label cCartNumber = new Label(3, 1,c.getCartNumber() , cellFormat);
                 sheet.addCell(cCartNumber);
-                Label cEmail = new Label(4, 1,c.getEmail(), cellFormat);
+                Label cDeposite;
+                if(c.isCartDeposit()){cDeposite = new Label(4, 1, "OPŁACONO", cellFormat);}
+                else {cDeposite = new Label(4, 1, "NIE OPŁACONO", cellFormat);}
+                sheet.addCell(cDeposite);
+                Label cEmail = new Label(5, 1,c.getEmail(), cellFormat);
                 sheet.addCell(cEmail);
-                Label cPhoneNumber = new Label(5, 1,c.getPhoneNumber() , cellFormat);
+                Label cPhoneNumber = new Label(6, 1,c.getPhoneNumber() , cellFormat);
                 sheet.addCell(cPhoneNumber);
-                Label cBucklet = new Label(6, 1,c.getBucklet().getName() , cellFormat);
+                Label cBucklet = new Label(7, 1,c.getBucklet().getName() , cellFormat);
                 sheet.addCell(cBucklet);
-                Number buckletPrice = new Number(7, 1, c.getBucklet().getPrice() , cellFormat);
+                Number buckletPrice = new Number(8, 1, c.getBucklet().getPrice() , cellFormat);
                 sheet.addCell(buckletPrice);
-                Label cPurchaseDate = new Label(8, 1, String.valueOf(c.getPurchaseDate()) , cellFormat);
+                Label cPurchaseDate = new Label(9, 1, String.valueOf(c.getPurchaseDate()) , cellFormat);
                 sheet.addCell(cPurchaseDate);
-                Label cExpiryDate = new Label(9, 1,String.valueOf(c.getExpiryDate()) , cellFormat);
+                Label cExpiryDate = new Label(10, 1,String.valueOf(c.getExpiryDate()) , cellFormat);
                 sheet.addCell(cExpiryDate);
                 Optional <Trainer> getTrainer = Optional.ofNullable(c.getTrainer());
                 if(getTrainer.isPresent()){
-                Label trainerName = new Label(10, 1,c.getTrainer().getName() , cellFormat);
+                Label trainerName = new Label(11, 1,c.getTrainer().getName() , cellFormat);
                 sheet.addCell(trainerName);
-                Label trainerSurname = new Label(11, 1,c.getTrainer().getSurname() , cellFormat);
+                Label trainerSurname = new Label(12, 1,c.getTrainer().getSurname() , cellFormat);
                 sheet.addCell(trainerSurname);}
                 else {
-                    Label trainerName = new Label(10, 1,"" , cellFormat);
+                    Label trainerName = new Label(11, 1,"" , cellFormat);
                     sheet.addCell(trainerName);
-                    Label trainerSurname = new Label(11, 1,"" , cellFormat);
+                    Label trainerSurname = new Label(12, 1,"" , cellFormat);
                     sheet.addCell(trainerSurname);
                 }
-                Label cComment = new Label(12, 1,c.getComment() , cellFormat);
+                Label cComment = new Label(13, 1,c.getComment() , cellFormat);
                 sheet.addCell(cComment);
             }
             workbook.write();
