@@ -1,4 +1,4 @@
-package pl.sportplusopole.controller;
+package pl.sportplusopole.excelExport;
 
 import jxl.write.WriteException;
 import lombok.RequiredArgsConstructor;
