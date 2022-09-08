@@ -11,10 +11,12 @@
 <body style="background-color: #168bb2">
 <h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Lista klientów <label style="color: #11e011">${trainer}</label></h1>
 </p>
-<div>
+<div style="width: 100%; display: inline-block">
     <div style="display: inline-block"><input type="button" onclick="location.href='/customer/add';" value="NOWY KLIENT" /></div>
     <div style="display: inline-block; right: auto"><input type="button" onclick="location.href='/customer/all';" value="WSZYSCY KLIENCI" /></div>
     <div style="display: inline-block; right: auto"><input type="button" onclick="location.href='/customer/lastVisit';" value="W KLUBIE" /></div>
+    <div style="float: right; margin-right: auto"><input type="button" style="background-color: #017e01" onclick="location.href='/customer/export';" value="EXCEL" /></div>
+
 </div>
 <div style="display: flex">
     <div>

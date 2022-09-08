@@ -18,6 +18,7 @@ import pl.sportplusopole.trainer.Trainer;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -27,9 +28,7 @@ import java.util.Optional;
 @Repository
 public class JExcel {
 
-    private final CustomerService customerService;
-
-    public void exportToExcel() throws IOException, WriteException{
+    public void exportToExcel(List<Customer> customers) throws IOException, WriteException{
         WritableWorkbook workbook = null;
         try {
             // tworzę plik
@@ -110,7 +109,7 @@ public class JExcel {
             WritableCellFormat cellFormat = new WritableCellFormat();
             cellFormat.setWrap(true);
 
-            for(Customer c : customerService.showALL()){
+            for(Customer c : customers){
                 Number cId = new Number(0, 1, c.getClientId(), cellFormat);
                 sheet.addCell(cId);
                 Label cName = new Label(1, 1,c.getName() , cellFormat);

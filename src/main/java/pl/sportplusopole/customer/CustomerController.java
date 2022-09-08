@@ -1,6 +1,7 @@
 package pl.sportplusopole.customer;
 
 
+import jxl.write.WriteException;
 import lombok.RequiredArgsConstructor;
 
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -23,6 +25,7 @@ import java.util.List;
 
 import pl.sportplusopole.bucklet.Bucklet;
 import pl.sportplusopole.bucklet.BuckletService;
+import pl.sportplusopole.excelExport.JExcel;
 import pl.sportplusopole.trainer.Trainer;
 import pl.sportplusopole.trainer.TrainerService;
 
@@ -36,6 +39,7 @@ public class CustomerController {
     private final CustomerService customerService;
     private final TrainerService trainerService;
     private final BuckletService buckletService;
+    private final JExcel jExcel;
 
     @GetMapping("/all")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
@@ -179,6 +183,13 @@ public class CustomerController {
             response.addCookie(c);
         }
         return "redirect:/customer/presence";
+    }
+
+    //export do excela
+    @GetMapping("/export")
+    public String exportToExcel() throws WriteException, IOException {
+        jExcel.exportToExcel(customerService.showALL());
+        return "redirect:/customer/all";
     }
 
     @GetMapping("/delete/{clientId}")
