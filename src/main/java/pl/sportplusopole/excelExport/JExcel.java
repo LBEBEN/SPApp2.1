@@ -28,13 +28,14 @@ import java.util.Optional;
 @Repository
 public class JExcel {
 
-    public void exportToExcel(List<Customer> customers) throws IOException, WriteException{
+    public void exportToExcel(List<Customer> customers, String name) throws IOException, WriteException{
         WritableWorkbook workbook = null;
+        int r = 1; // numer wiersza
         try {
             // tworzę plik
         File file = new File(".");
         String path = file.getAbsolutePath();
-        String fileLocation = path.substring(0,path.length()-1)+"temp.xls";
+        String fileLocation = path.substring(0,path.length()-1)+name+".xls";
 
         workbook = Workbook.createWorkbook(new File(fileLocation));
         //tworzę nagłówki
@@ -110,44 +111,45 @@ public class JExcel {
             cellFormat.setWrap(true);
 
             for(Customer c : customers){
-                Number cId = new Number(0, 1, c.getClientId(), cellFormat);
+                Number cId = new Number(0, r, c.getClientId(), cellFormat);
                 sheet.addCell(cId);
-                Label cName = new Label(1, 1,c.getName() , cellFormat);
+                Label cName = new Label(1, r,c.getName() , cellFormat);
                 sheet.addCell(cName);
-                Label cSurname = new Label(2, 1,c.getSurname() , cellFormat);
+                Label cSurname = new Label(2, r,c.getSurname() , cellFormat);
                 sheet.addCell(cSurname);
-                Label cCartNumber = new Label(3, 1,c.getCartNumber() , cellFormat);
+                Label cCartNumber = new Label(3, r,c.getCartNumber() , cellFormat);
                 sheet.addCell(cCartNumber);
                 Label cDeposite;
-                if(c.isCartDeposit()){cDeposite = new Label(4, 1, "OPŁACONO", cellFormat);}
-                else {cDeposite = new Label(4, 1, "NIE OPŁACONO", cellFormat);}
+                if(c.isCartDeposit()){cDeposite = new Label(4, r, "OPŁACONO", cellFormat);}
+                else {cDeposite = new Label(4, r, "NIE OPŁACONO", cellFormat);}
                 sheet.addCell(cDeposite);
-                Label cEmail = new Label(5, 1,c.getEmail(), cellFormat);
+                Label cEmail = new Label(5, r,c.getEmail(), cellFormat);
                 sheet.addCell(cEmail);
-                Label cPhoneNumber = new Label(6, 1,c.getPhoneNumber() , cellFormat);
+                Label cPhoneNumber = new Label(6, r,c.getPhoneNumber() , cellFormat);
                 sheet.addCell(cPhoneNumber);
-                Label cBucklet = new Label(7, 1,c.getBucklet().getName() , cellFormat);
+                Label cBucklet = new Label(7, r,c.getBucklet().getName() , cellFormat);
                 sheet.addCell(cBucklet);
-                Number buckletPrice = new Number(8, 1, c.getBucklet().getPrice() , cellFormat);
+                Number buckletPrice = new Number(8, r, c.getBucklet().getPrice() , cellFormat);
                 sheet.addCell(buckletPrice);
-                Label cPurchaseDate = new Label(9, 1, String.valueOf(c.getPurchaseDate()) , cellFormat);
+                Label cPurchaseDate = new Label(9, r, String.valueOf(c.getPurchaseDate()) , cellFormat);
                 sheet.addCell(cPurchaseDate);
-                Label cExpiryDate = new Label(10, 1,String.valueOf(c.getExpiryDate()) , cellFormat);
+                Label cExpiryDate = new Label(10, r,String.valueOf(c.getExpiryDate()) , cellFormat);
                 sheet.addCell(cExpiryDate);
                 Optional <Trainer> getTrainer = Optional.ofNullable(c.getTrainer());
                 if(getTrainer.isPresent()){
-                Label trainerName = new Label(11, 1,c.getTrainer().getName() , cellFormat);
+                Label trainerName = new Label(11, r,c.getTrainer().getName() , cellFormat);
                 sheet.addCell(trainerName);
-                Label trainerSurname = new Label(12, 1,c.getTrainer().getSurname() , cellFormat);
+                Label trainerSurname = new Label(12, r,c.getTrainer().getSurname() , cellFormat);
                 sheet.addCell(trainerSurname);}
                 else {
-                    Label trainerName = new Label(11, 1,"" , cellFormat);
+                    Label trainerName = new Label(11, r,"" , cellFormat);
                     sheet.addCell(trainerName);
-                    Label trainerSurname = new Label(12, 1,"" , cellFormat);
+                    Label trainerSurname = new Label(12, r,"" , cellFormat);
                     sheet.addCell(trainerSurname);
                 }
-                Label cComment = new Label(13, 1,c.getComment() , cellFormat);
+                Label cComment = new Label(13, r,c.getComment() , cellFormat);
                 sheet.addCell(cComment);
+                r++;
             }
             workbook.write();
         }

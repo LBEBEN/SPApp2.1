@@ -188,7 +188,7 @@ public class CustomerController {
     //export do excela
     @GetMapping("/export")
     public String exportToExcel() throws WriteException, IOException {
-        jExcel.exportToExcel(customerService.showALL());
+        jExcel.exportToExcel(customerService.showALL(), "NewExport");
         return "redirect:/customer/all";
     }
 
