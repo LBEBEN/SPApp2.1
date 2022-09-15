@@ -82,7 +82,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-security</artifactId>
 			</dependency>
-
+<!--export do Excela-->
 		<dependency>
 			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
@@ -112,8 +112,6 @@
 				<configuration>
 					<archive>
 						<manifest>
-<!--							<addClasspath>true</addClasspath>-->
-<!--							<classpathPrefix>lib/</classpathPrefix>-->
 							<mainClass>pl.sportplusopole.Application</mainClass>
 						</manifest>
 					</archive>

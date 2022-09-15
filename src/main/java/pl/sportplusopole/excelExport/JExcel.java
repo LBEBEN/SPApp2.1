@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import pl.sportplusopole.customer.Customer;
-import pl.sportplusopole.customer.CustomerService;
 import pl.sportplusopole.trainer.Trainer;
 
 

@@ -8,15 +8,6 @@
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="SPApp2.0/Hibernate" uuid="4921e7e9-a37b-4c0c-b0dc-55012f809d95">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/sportplus?serverTimezone=Europe/Berlin&amp;useUnicode=true&amp;characterEncoding=UTF-8</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="SPApp2.1/Hibernate" uuid="27d6a76b-22a0-4898-8496-9f9c87e78f47">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
