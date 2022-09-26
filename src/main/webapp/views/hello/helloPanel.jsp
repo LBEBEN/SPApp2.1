@@ -6,7 +6,7 @@
 </head>
 <body>
 <div style="width: 450px; margin: 0 37%;">
-<h1 style="color: white; text-align: center">Witaj w aplikacji Sport Plus</h1>
+<h1 style="color: #ffffff; text-align: center">Witaj w aplikacji Sport Plus</h1>
     <div style="display: inline-block; width: 100%">
         <input style=" border-radius: 6px; font-size: 18px; " type="button" onclick="location.href='/customer/lastVisit';" value="LISTA KLIENTÓW"/>
         <input style="float: right ;margin-right: auto;  border-radius: 6px; font-size: 18px; " type="button" value="OBECNOŚĆ" onclick="window.open('/customer/presence')" />

@@ -66,6 +66,15 @@ public class TrainerController {
         return "redirect:/trainer/all";
     }
 
+    @ModelAttribute("views")
+    public List <String> views(){
+        List<String> views = new ArrayList<>();
+        views.add("Archiwum");
+        views.add("Aktywni");
+        views.add("W klubie");
+        return views;
+    }
+
     @GetMapping("/client/{trainerId}")
     public String showAllTrainerClients(@PathVariable int trainerId, Model model){
         int size = customerRepository.coachesClients(trainerId).size();

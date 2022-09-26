@@ -19,6 +19,12 @@ public class BuckletDao {
         Query query = entityManager.createQuery("SELECT b FROM Bucklet b");
         return query.getResultList();
     }
+
+    public List <Double> showAllPrice(){
+        Query query = entityManager.createQuery("SELECT b.price FROM Bucklet b");
+        return query.getResultList();
+    }
+
     //wyszukiwanie pojedynczego trenera
     public Bucklet findById(int id){
         return entityManager.find(Bucklet.class, id);

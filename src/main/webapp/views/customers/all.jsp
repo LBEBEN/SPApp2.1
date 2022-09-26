@@ -3,20 +3,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-
+    <link href="<c:url value="http://localhost:8080/main.css"/>" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <title>Klienci</title>
 </head>
-<body style="background-color: #168bb2">
-<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Lista klientów <label style="color: #11e011">${trainer}</label></h1>
+<body >
+<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Lista klientów <label style="color: #10d210">${trainer}</label></h1>
 </p>
 <div style="width: 100%; display: inline-block">
     <div style="display: inline-block"><input type="button" onclick="location.href='/customer/add';" value="NOWY KLIENT" /></div>
-    <div style="display: inline-block; right: auto"><input type="button" onclick="location.href='/customer/all';" value="WSZYSCY KLIENCI" /></div>
-    <div style="display: inline-block; right: auto"><input type="button" onclick="location.href='/customer/lastVisit';" value="W KLUBIE" /></div>
-    <div style="float: right; margin-right: auto"><input type="button" style="background-color: #017e01" onclick="location.href='/customer/export';" value="EXCEL" /></div>
-
+    <div style="display: inline-block; right: auto"><form method="post">
+        <select name="myViews">
+            <c:forEach var="v" items="${views}">
+                <option>${v}</option>
+            </c:forEach>
+        </select>
+        <input style="border-radius: 3px" type="submit" value="POKAŻ">
+    </form></div>
+    <div style="display: inline-block"><input type="button" style="background-color: #17ab17; color: #940505" onclick="location.href='/customer/export';" value="EXCEL EXPORT" /></div>
 </div>
 <div style="display: flex">
     <div>

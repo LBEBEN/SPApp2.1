@@ -1,10 +1,13 @@
 package pl.sportplusopole.bucklet;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import pl.sportplusopole.customer.Customer;
+import pl.sportplusopole.customer.CustomerRepository;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 import javax.transaction.Transactional;
 
 @Service
@@ -13,6 +16,7 @@ import javax.transaction.Transactional;
 public class BuckletService {
 
     private final BuckletDao buckletDao;
+    private final CustomerRepository customerRepository;
 
     public List<Bucklet> showAll(){
         return buckletDao.showAll();
@@ -39,4 +43,16 @@ public class BuckletService {
                 customer.setExpiryDate(customer.getPurchaseDate().toLocalDate().plusDays(customer.getBucklet().getValidity()));
             }}
     }
+
+    // metoda do podsumowania karnetów
+    public Map<Double, Integer> showPriceBalance(){
+        Map<Double, Integer> showPriceBalance = new TreeMap<>();
+        List<Double> allPrice = buckletDao.showAllPrice();
+        for(Double price : allPrice){
+            showPriceBalance.put(price, customerRepository.countPrice(price, LocalDate.now().plusDays(60)));
+        }
+        return showPriceBalance;
+    }
+
+
 }

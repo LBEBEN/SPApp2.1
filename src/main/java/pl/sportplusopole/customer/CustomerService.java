@@ -17,10 +17,6 @@ public class CustomerService {
     private final CustomerDao customerDao;
     private final CustomerRepository customerRepository;
 
-    public List<Customer> showALL(){
-        return customerDao.showAll();
-    }
-
     public Customer findById (int id){
         return customerDao.findById(id);
     }
@@ -40,6 +36,16 @@ public class CustomerService {
         return customerRepository.visitCustmoer(date);
     }
 
+    public List<Customer> showALL(){
+        return customerDao.showAll();
+    }
+
+    // aktywni klienci... czyli klienci którzy przez ostatnie 60 dni przynajmniej raz byli w klubie
+    public List<Customer> activeCustomers(){
+        LocalDate date = LocalDate.now().minusDays(60);
+        return customerRepository.visitCustmoer(date);
+    }
+
     public List<Customer> customerBySurname(String surname){
         return customerRepository.customerBySurname(surname);
     }
@@ -51,15 +57,17 @@ public class CustomerService {
     public void notePresence(String cartNumber){
         Customer customer = customerRepository.findByCartNumber(cartNumber);
         LocalDate presentDay = LocalDate.now();
-        customer.setLastVisit(presentDay);
-        if(customer.getExpiryDate().isBefore(presentDay) || customer.getVisitsLeft().equals("1")){
-            customer.setVisitsLeft(null);
+        if(!customer.getLastVisit().equals(presentDay)) {
+            customer.setLastVisit(presentDay);
+            if (customer.getExpiryDate().isBefore(presentDay) || customer.getVisitsLeft().equals("1")) {
+                customer.setVisitsLeft(null);
+            }
+            if (isNumeric(customer.getVisitsLeft())) {
+                int i = Integer.parseInt(customer.getVisitsLeft()) - 1;
+                customer.setVisitsLeft(String.valueOf(i));
+            }
+            editCustomer(customer);
         }
-        if(isNumeric(customer.getVisitsLeft())){
-            int i = Integer.parseInt(customer.getVisitsLeft()) - 1;
-            customer.setVisitsLeft(String.valueOf(i));
-        }
-        editCustomer(customer);
     }
 
     public static boolean isNumeric(String strNum) {

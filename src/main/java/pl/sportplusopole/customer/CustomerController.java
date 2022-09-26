@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,18 +53,39 @@ public class CustomerController {
         model.addAttribute("customers", customerService.showALL());
         model.addAttribute("bucklets", buckletService.showAll());
         model.addAttribute("size", size);
+        model.addAttribute("trainer", "archiwalnych");
         return "customers/all";
     }
 
-    @PostMapping(value = "/all")
+    @GetMapping("/activeCustomers")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
-    public String showCustomerBySurname(HttpServletRequest request, Model model){
-        int size = customerService.customerBySurname(request.getParameter("surname")).size();
-        model.addAttribute("customers", customerService.customerBySurname(request.getParameter("surname")));
+    public String showActiveCustomers(Model model){
+        int size = customerService.activeCustomers().size();
+        model.addAttribute("customers", customerService.activeCustomers());
         model.addAttribute("bucklets", buckletService.showAll());
         model.addAttribute("size", size);
+        model.addAttribute("trainer", "aktywnych");
         return "customers/all";
     }
+
+    @PostMapping(value ={ "/all","/lastVisit","activeCustomers"})
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    public String showViews(HttpServletRequest request){
+        String views = request.getParameter("myViews");
+        String choosViews = "";
+        switch(views){
+            case "Archiwum":
+                choosViews = "all";
+            break;
+            case "Aktywni":
+                choosViews="activeCustomers";
+                break;
+            default: choosViews="lastVisit";
+            break;
+        }
+        return "redirect:/customer/"+choosViews;
+    }
+
     // ostatnia wizyta
     @GetMapping("/lastVisit")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
@@ -72,6 +94,7 @@ public class CustomerController {
         model.addAttribute("size", size);
         model.addAttribute("bucklets", buckletService.showAll());
         model.addAttribute("customers", customerService.visitCustomer());
+        model.addAttribute("trainer", "w klubie");
         return "customers/all";
     }
 
@@ -81,6 +104,16 @@ public class CustomerController {
     public String aboutTheCustomer(@PathVariable int clientId, Model model){
         model.addAttribute("customer", customerService.findById(clientId));
         return "/customers/details";
+    }
+
+    // dostępne widoki
+    @ModelAttribute("views")
+    public List <String> views(){
+        List<String> views = new ArrayList<>();
+        views.add("Archiwum");
+        views.add("Aktywni");
+        views.add("W klubie");
+        return views;
     }
 
     @ModelAttribute("trainers")

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link href="<c:url value="http://localhost:8080/main.css"/>" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <title>Rodzaje karnetów</title>
@@ -10,6 +11,7 @@
 <h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em"> Rodzaje karnetów</h1>
 <input style="border-radius: 3px"  type="button" onclick="location.href='/bucklet/add';" value="DODAJ KARNET" />
 <input style="border-radius: 3px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+<input style="border-radius: 3px" type="button" onclick="location.href='/bucklet/priceBalance';" value="BILANS"/>
 </p>
 <table border="1" bgcolor = #b0c4de id = "buckletTable" class ="display">
     <thead>

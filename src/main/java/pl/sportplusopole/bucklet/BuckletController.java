@@ -67,4 +67,12 @@ public class BuckletController {
         return "redirect:/bucklet/all";
     }
 
+    @GetMapping("/priceBalance")
+    public String showPriceBalance(Model model){
+        int size = buckletService.showPriceBalance().size();
+        model.addAttribute("size", size);
+        model.addAttribute("priceBalance", buckletService.showPriceBalance());
+        return "bucklets/priceBalance";
+    }
+
 }

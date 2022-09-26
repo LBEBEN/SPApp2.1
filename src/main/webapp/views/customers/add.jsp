@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link href="<c:url value="http://localhost:8080/main.css"/>" rel="stylesheet" type="text/css">
     <title>Nowy klient</title>
 </head>
 <body style="background-color: #168bb2; ">
