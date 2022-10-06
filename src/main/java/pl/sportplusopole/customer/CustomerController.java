@@ -190,6 +190,7 @@ public class CustomerController {
         return "redirect:/customer/all";
     }
 
+
     @GetMapping("/presence")
     public String notePresence(HttpServletRequest request, HttpServletResponse response, Model model){
         List <Cookie> cookiesList = List.of(request.getCookies());

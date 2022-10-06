@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -54,9 +55,15 @@ public class CustomerService {
         return customerRepository.coachesClients(trainersId);
     }
 
+
     public void notePresence(String cartNumber){
         Customer customer = customerRepository.findByCartNumber(cartNumber);
         LocalDate presentDay = LocalDate.now();
+        Optional <LocalDate> firstVisit = Optional.ofNullable(customer.getLastVisit());
+        if(!firstVisit.isPresent()){
+            customer.setLastVisit(presentDay);
+        }
+
         if(!customer.getLastVisit().equals(presentDay)) {
             customer.setLastVisit(presentDay);
             if (customer.getExpiryDate().isBefore(presentDay) || customer.getVisitsLeft().equals("1")) {
