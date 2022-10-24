@@ -60,7 +60,7 @@
                     <td>${customer.purchaseDate}</td>
                     <td>${customer.expiryDate}</td>
                     <td><c:choose>
-                        <c:when test="${empty customer.visitsLeft}"><label style="color: red; font-weight: bold">KONIEC KARNETU</label></c:when>
+                        <c:when test="${customer.visitsLeft == 'Koniec karnetu'}"><label style="color: red; font-weight: bold">KONIEC KARNETU</label></c:when>
                         <c:otherwise>${customer.visitsLeft}</c:otherwise>
                     </c:choose>
                     </td>

@@ -6,20 +6,20 @@
     <title>Odnów karnet</title>
 </head>
 <body style="background-color: #168bb2">
-<h1 style="display: flex">Odnów karnet dla <div style="color: white; margin: 0 10px;text-shadow: black 0.1em 0.1em 0.2em">${customer.name} ${customer.surname}</div></h1>
+<h1 style="display: flex; color: white">Odnów karnet dla <div style="color: white; margin: 0 10px;text-shadow: #0c51ec 0.1em 0.1em 0.2em">${customer.name} ${customer.surname}</div></h1>
 
 <form style="zoom: 1.5" method="post">
     <label>
         <input type="number" name="clientId" value="${customer.clientId}" hidden>
     </label>
-     Ustaw typ karnetu :
+    <label style="color: white">Ustaw typ karnetu :</label>
     <select name="buckletType">
         <option value="${customer.bucklet.buckletId}">${customer.bucklet.name}</option>
         <c:forEach var="b" items="${bucklets}" >
             <option value="${b.buckletId}">${b.name}</option>
         </c:forEach>
     </select>
-    Ustaw date
+    <label style="color: white">Ustaw datę </label>
     <input type="date" name="date" value="${newDateSet}">
 
     <input style="border-radius: 3px" type="submit" value="ODNÓW">

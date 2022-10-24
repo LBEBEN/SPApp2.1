@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Entity
 @Table(name = "customers")
@@ -44,7 +45,7 @@ public class Customer {
     private String phoneNumber;
 
     @Column (name = "purchase_date")
-    @javax.validation.constraints.NotNull(message = "Ustaw datę zakupu")
+    @NotNull
     private Date purchaseDate; // data zakupu karnetu
 
     private LocalDate expiryDate; // data ważności karnetu

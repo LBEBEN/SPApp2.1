@@ -110,9 +110,9 @@ public class CustomerController {
     @ModelAttribute("views")
     public List <String> views(){
         List<String> views = new ArrayList<>();
-        views.add("Archiwum");
         views.add("Aktywni");
         views.add("W klubie");
+        views.add("Archiwum");
         return views;
     }
 
@@ -129,7 +129,9 @@ public class CustomerController {
     @GetMapping("/add")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public String addCustomer(Model model){
+        Date today = Date.valueOf(LocalDate.now());
         model.addAttribute("customer", new Customer());
+        model.addAttribute("today", today);
         return "customers/add";
     }
 
@@ -211,10 +213,16 @@ public class CustomerController {
     @PostMapping("/presence")
     public String notePresence(@RequestParam String cartNumber, HttpServletResponse response) {
         try {
+            if(customerService.isActive(cartNumber)){
             customerService.notePresence(cartNumber);
             Cookie c = new Cookie("info", "1");
             c.setPath("http://localhost:8080/customer/presence");
-            response.addCookie(c);
+            response.addCookie(c);}
+            else {
+                Cookie c = new Cookie("info", "2");
+                c.setPath("http://localhost:8080/customer/presence");
+                response.addCookie(c);
+            }
         } catch (NullPointerException e){
             Cookie c = new Cookie("info", "0");
             c.setPath("http://localhost:8080/customer/presence");

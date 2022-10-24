@@ -24,8 +24,10 @@ public class CustomerCartNumberValidator implements ConstraintValidator<Customer
         boolean confirm = true;
         List<Customer> customerCartNumber = customerService.showALL();
         for(Customer c : customerCartNumber) {
-            if(c.getCartNumber().equals(cartNumber))
+            if (c.getCartNumber().equals(cartNumber)) {
                 confirm = false;
+                break;
+            }
         }
         return confirm;
     }

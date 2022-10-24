@@ -62,12 +62,14 @@ public class CustomerService {
         Optional <LocalDate> firstVisit = Optional.ofNullable(customer.getLastVisit());
         if(!firstVisit.isPresent()){
             customer.setLastVisit(presentDay);
+            int i = Integer.parseInt(customer.getVisitsLeft()) - 1;
+            customer.setVisitsLeft(String.valueOf(i));
         }
 
         if(!customer.getLastVisit().equals(presentDay)) {
             customer.setLastVisit(presentDay);
             if (customer.getExpiryDate().isBefore(presentDay) || customer.getVisitsLeft().equals("1")) {
-                customer.setVisitsLeft(null);
+                customer.setVisitsLeft("Koniec karnetu");
             }
             if (isNumeric(customer.getVisitsLeft())) {
                 int i = Integer.parseInt(customer.getVisitsLeft()) - 1;
@@ -75,6 +77,12 @@ public class CustomerService {
             }
             editCustomer(customer);
         }
+    }
+
+    //czy karnet aktywny
+    public boolean isActive(String cartNumber){
+        String isActive = String.valueOf(customerRepository.findByCartNumber(cartNumber).getVisitsLeft());
+        return !isActive.equals("Koniec karnetu");
     }
 
     public static boolean isNumeric(String strNum) {

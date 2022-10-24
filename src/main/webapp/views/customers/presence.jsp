@@ -17,8 +17,15 @@
     <p></p>
 <div class="flex2">
 <c:choose>
-    <c:when test="${info == '1'}"><h3 style="color: white; text-shadow: black 0.1em 0.1em 0.2em"> Zaakceptowano użytkownika </h3> </c:when>
-    <c:when test="${info == '0'}"><h2 style="color: red; text-shadow: black 0.1em 0.1em 0.2em"> Nie ma takiego klienta lub karnet stracił ważność</h2> </c:when>
+    <c:when test="${info == '1'}"><h3 style="color: white; text-shadow: black 0.1em 0.1em 0.2em"> Witaj w klubie </h3> </c:when>
+    <c:when test="${info == '0'}"><h2 style="color: red; text-shadow: black 0.1em 0.1em 0.2em"> Nie ma takiego klienta </h2> </c:when>
+    <c:when test="${info == '2'}"><h2 style="color: red; text-shadow: black 0.1em 0.1em 0.2em; width: 500px;
+        height: 120px;
+        margin: auto;
+        text-align: center;
+        font-size: xxx-large;
+        right: 0;
+        left: 0;"> Twój karnet stracił ważność !!! </h2> </c:when>
 </c:choose>
 </div>
 </body>
@@ -42,6 +49,15 @@
         bottom: 0;
         left: 0;
         margin: auto;
+    }
+    .flex2{
+        width: 500px;
+        height: 100px;
+        margin: auto;
+        text-align: center;
+        font-size: xxx-large;
+        right: 0;
+        left: 0;
     }
 </style>
 </html>

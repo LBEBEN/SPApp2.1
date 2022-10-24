@@ -7,8 +7,8 @@
     <link href="<c:url value="http://localhost:8080/main.css"/>" rel="stylesheet" type="text/css">
     <title>Nowy klient</title>
 </head>
-<body style="background-color: #168bb2; ">
-<h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Dodaj nowego klienta</h1>
+<body style="background-color: #168bb2; color: white ">
+<h1 style="color: rgb(12,81,236); text-shadow: black 0.1em 0.1em 0.2em">Dodaj nowego klienta</h1>
 
 <form:form cssStyle="zoom: 1.5" method="post" modelAttribute="customer">
 <div style="display:flex">
@@ -32,7 +32,7 @@
     </form:select><br>
         <form:errors path="bucklet" cssClass="ui-state-error-text" cssStyle="color: red"/>
     </div>
-    <div style="margin: 0 15px">Od kiedy</br><form:input type="date" path="purchaseDate" placeholder = "dd-MM-yyyy" /></br><form:errors path="purchaseDate" cssStyle="color: #f30909"/></div>
+    <div style="margin: 0 15px">Od kiedy</br><form:input type="date" path="purchaseDate" value = "${today}"/></br><form:errors path="purchaseDate" cssStyle="color: #f30909"/></div>
 </div>
 </p>
 
