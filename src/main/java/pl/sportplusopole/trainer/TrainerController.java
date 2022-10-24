@@ -69,9 +69,9 @@ public class TrainerController {
     @ModelAttribute("views")
     public List <String> views(){
         List<String> views = new ArrayList<>();
-        views.add("Archiwum");
-        views.add("Aktywni");
         views.add("W klubie");
+        views.add("Aktywni");
+        views.add("Archiwum");
         return views;
     }
 

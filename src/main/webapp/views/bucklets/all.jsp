@@ -10,7 +10,7 @@
 <body style="background-color: #168bb2">
 <h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em"> Rodzaje karnetów</h1>
 <input style="border-radius: 3px"  type="button" onclick="location.href='/bucklet/add';" value="DODAJ KARNET" />
-<input style="border-radius: 3px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+<input style="border-radius: 3px" type="button" onclick="location.href='/customer/lastVisit';" value="LISTA KLIENTÓW"/>
 <input style="border-radius: 3px" type="button" onclick="location.href='/bucklet/priceBalance';" value="BILANS"/>
 </p>
 <table border="1" bgcolor = #b0c4de id = "buckletTable" class ="display">

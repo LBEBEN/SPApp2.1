@@ -12,7 +12,7 @@
 </p>
 <div>
     <input style="border-radius: 3px" type="button" onclick="location.href='/trainer/add';" value="DODAJ TRENERA" />
-    <input style="border-radius: 3px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+    <input style="border-radius: 3px" type="button" onclick="location.href='/customer/lastVisit';" value="LISTA KLIENTÓW"/>
 </div>
 </p>
 

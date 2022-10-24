@@ -35,7 +35,7 @@
     <div style="margin: 0 10px; font-style: italic"><b style="color: white">Uwagi</b><br><label style="color: gold">${customer.comment}</label></div>
 </div>
 <p>
-    <input style="border-radius: 4px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+    <input style="border-radius: 4px" type="button" onclick="location.href='/customer/lastVisit';" value="LISTA KLIENTÓW"/>
     <input style="margin: 0 10px; border-radius: 4px" type="button"  onclick="location.href='/customer/edit/${customer.clientId}';" value="EDYTUJ DANE"/>
 </div>
 </body>

@@ -80,7 +80,9 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script>
     $(document).ready( function () {
-        $('#table_id').DataTable();
+        $('#table_id').DataTable({
+            "pageLength": 40
+        });
     });
 </script>
 </body>

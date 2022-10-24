@@ -51,7 +51,7 @@ Uwagi</br>
     <p></p>
 
     <input style="border-radius: 4px" type="submit" value="AKCEPTUJ" style="border-bottom-style: solid; border-radius: 4px;"/>
-    <input style="border-radius: 4px" type="button" onclick="location.href='/customer/all';" value="LISTA KLIENTÓW"/>
+    <input style="border-radius: 4px" type="button" onclick="location.href='/customer/lastVisit';" value="LISTA KLIENTÓW"/>
     </form:form>
 </body>
 </html>
